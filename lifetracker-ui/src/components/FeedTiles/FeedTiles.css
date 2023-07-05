@@ -1,3 +1,53 @@
 .tiles {
   flex-direction: row;
 }
+
+.css-gg4vpm {
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+}
+.css-dvxtzn {
+  display: flex;
+  flex-direction: column;
+  -webkit-box-align: center;
+  align-items: center;
+}
+
+.css-70qvj9 {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+}
+
+.css-17xejub {
+  flex: 1 1 0%;
+  place-self: stretch;
+}
+
+div {
+  display: block;
+}
+
+element.style {
+  /* background-image: url("/assets/athlete-adf95577.jpg"); */
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.Tile {
+  border-radius: 10px;
+  background: white;
+  width: calc(50% - 10px);
+  padding: 16px;
+  min-width: 80px;
+  min-width: 250px;
+  min-height: 250px;
+  margin-bottom: 16px;
+  transition: all 0.25s ease-in-out;
+  box-shadow: #09064a26 0 2px 34px;
+}
+
+.css-1jijfcn {
+  font-size: var(--chakra-fontSizes-3xl);
+}

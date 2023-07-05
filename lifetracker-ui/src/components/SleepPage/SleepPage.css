@@ -4,3 +4,127 @@
 .SleepPage .button button {
   flex: 1;
 }
+
+
+.css-1bpnzr3 {
+  margin-top: var(--chakra-space-10);
+}
+
+.css-k2eq80 {
+  background: var(--chakra-colors-cyan-500);
+  padding-top: var(--chakra-space-24);
+  padding-bottom: var(--chakra-space-20);
+  padding-inline-start: var(--chakra-space-6);
+  padding-inline-end: var(--chakra-space-6);
+}
+.css-1cgbrw5 {
+  display: flex;
+  flex-direction: column;
+  gap: var(--chakra-space-6);
+  text-align: center;
+}
+
+.css-b5coes {
+  font-family: var(--chakra-fonts-heading);
+  line-height: 1.33;
+  color: var(--chakra-colors-white);
+  font-weight: var(--chakra-fontWeights-extrabold);
+  font-size: var(--chakra-fontSizes-5xl);
+}
+
+.css-vpbd2d {
+  display: flex;
+  max-width: 1680px;
+  margin-inline: auto;
+}
+
+.css-1qfrez2 {
+  display: flex;
+  margin-top: var(--chakra-space-16);
+  max-width: 1680px;
+  margin-inline: auto;
+  width: 100%;
+}
+
+.css-uiodal {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  margin-inline: auto;
+  flex: 1 1 0%;
+}
+
+.css-j7qwjs {
+  display: flex;
+  flex-direction: column;
+}
+
+.css-hzsul0 {
+  font-family: var(--chakra-fonts-heading);
+  font-weight: var(--chakra-fontWeights-bold);
+  font-size: var(--chakra-fontSizes-3xl);
+  line-height: 1.33;
+  margin-bottom: var(--chakra-space-10);
+}
+
+.css-spn4bz {
+  transition-property: var(--chakra-transition-property-common);
+  transition-duration: var(--chakra-transition-duration-fast);
+  transition-timing-function: var(--chakra-transition-easing-ease-out);
+  cursor: pointer;
+  text-decoration: none;
+  outline: transparent solid 2px;
+  outline-offset: 2px;
+  color: inherit;
+}
+
+a {
+  background-color: transparent;
+}
+
+.css-ez23ye {
+  display: inline-flex;
+  appearance: none;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  user-select: none;
+  position: relative;
+  white-space: nowrap;
+  vertical-align: middle;
+  outline: transparent solid 2px;
+  outline-offset: 2px;
+  line-height: 1.2;
+  border-radius: var(--chakra-radii-md);
+  font-weight: var(--chakra-fontWeights-semibold);
+  transition-property: var(--chakra-transition-property-common);
+  transition-duration: var(--chakra-transition-duration-normal);
+  height: var(--chakra-sizes-10);
+  min-width: var(--chakra-sizes-10);
+  font-size: var(--chakra-fontSizes-md);
+  padding-inline-start: var(--chakra-space-4);
+  padding-inline-end: var(--chakra-space-4);
+  background: var(--chakra-colors-gray-100);
+  color: var(--chakra-colors-gray-800);
+}
+
+button {
+  
+  padding: 0px;
+}
+
+.css-ni3ua3 {
+  object-fit: cover;
+  margin-top: var(--chakra-space-10);
+  margin-bottom: var(--chakra-space-10);
+  width: 300px;
+  height: 300px;
+  border-radius: var(--chakra-radii-lg);
+}
+
+img {
+  border-style: none;
+}
