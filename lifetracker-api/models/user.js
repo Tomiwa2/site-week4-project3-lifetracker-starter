@@ -117,7 +117,8 @@ class User {
             RETURNING name,
                       category,
                       calories,
-                      quantity
+                      quantity,
+                      image_url
                       `,
       [
         name,

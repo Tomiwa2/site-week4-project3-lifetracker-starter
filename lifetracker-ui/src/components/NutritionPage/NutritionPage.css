@@ -133,3 +133,120 @@
 img {
   border-style: none;
 }
+
+.css-xixnl8 {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: var(--chakra-space-5);
+  margin-bottom: var(--chakra-space-5);
+  width: 100%;
+}
+
+.css-89mcmc {
+  font-size: var(--chakra-fontSizes-sm);
+  color: var(--chakra-colors-gray-500);
+}
+
+.css-2plr3x {
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--chakra-shadows-lg);
+  border-radius: var(--chakra-radii-lg);
+  padding-inline-start: var(--chakra-space-10);
+  padding-inline-end: var(--chakra-space-10);
+  padding-top: var(--chakra-space-5);
+  padding-bottom: var(--chakra-space-5);
+  background-color: var(--chakra-colors-blue-300);
+}
+
+.css-56yjmq {
+  display: flex;
+  margin-bottom: var(--chakra-space-10);
+}
+
+.css-64l6oh:not([data-loaded]) {
+  --avatar-bg: #d218e9;
+}
+
+.css-64l6oh {
+  border-radius: var(--chakra-radii-full);
+  display: inline-flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: var(--chakra-fontWeights-medium);
+  position: relative;
+  flex-shrink: 0;
+  background: var(--avatar-bg);
+  font-size: var(--avatar-font-size);
+  color: var(--chakra-colors-white);
+  border-color: var(--avatar-border-color);
+  vertical-align: top;
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  --avatar-border-color: var(--chakra-colors-white);
+  --avatar-size: 3rem;
+  --avatar-font-size: calc(3rem / 2.5);
+}
+
+.css-1ebyn6 {
+  font-size: var(--avatar-font-size);
+  line-height: 1;
+}
+.css-1kw2fa0 {
+  margin-left: var(--chakra-space-3);
+}
+
+.css-y5314g {
+  font-family: var(--chakra-fonts-heading);
+  font-weight: var(--chakra-fontWeights-bold);
+  font-size: var(--chakra-fontSizes-3xl);
+  line-height: 1.33;
+  color: var(--chakra-colors-white);
+}
+
+.css-lvvibp {
+  display: inline-block;
+  white-space: nowrap;
+  vertical-align: middle;
+  padding-inline-start: var(--chakra-space-1);
+  padding-inline-end: var(--chakra-space-1);
+  text-transform: uppercase;
+  border-radius: var(--chakra-radii-sm);
+  font-weight: var(--chakra-fontWeights-bold);
+  background: var(--badge-bg);
+  color: var(--badge-color);
+  box-shadow: var(--badge-shadow);
+  --badge-bg: var(--chakra-colors-green-100);
+  --badge-color: var(--chakra-colors-green-800);
+  margin-left: var(--chakra-space-1);
+  font-size: 0.9rem;
+}
+.css-1lekzkb {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+}
+
+.css-1mbo1ls {
+  position: relative;
+  flex: 1 1 0%;
+}
+
+.css-14go5ty {
+  font-weight: var(--chakra-fontWeights-medium);
+  font-size: var(--chakra-fontSizes-sm);
+}
+
+.css-1axeus7 {
+  vertical-align: baseline;
+  font-weight: var(--chakra-fontWeights-semibold);
+  font-size: var(--chakra-fontSizes-2xl);
+  font-variant-numeric: proportional-nums;
+}
