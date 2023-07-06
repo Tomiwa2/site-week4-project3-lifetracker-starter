@@ -11,11 +11,13 @@ CREATE TABLE users (
 
 
 CREATE TABLE nutrition (
+
   id            SERIAL PRIMARY KEY, 
   name          VARCHAR(255) NOT NULL,
   category      VARCHAR(255) NOT NULL,
+  quantity     INTEGER NOT NULL,
   calories      INTEGER NOT NULL,
-  image_url     VARCHAR(255) NOT NULL NOT NULL UNIQUE CHECK (position ('http://' IN image_url) > 0),
+  image_url     VARCHAR(255) NOT NULL CHECK (position ('http://' IN image_url) > 0),
   user_id       INTEGER NOT NULL, 
   created_at    TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (user_id) REFERENCES users (id)

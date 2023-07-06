@@ -28,6 +28,7 @@ class User {
     };
   }
 
+ 
   /**
    * Authenticate user with email and password.
    *
@@ -38,17 +39,7 @@ class User {
 
   static async authenticate(creds) {
     const { email, password } = creds;
-    //const requiredCreds = ["email", "password"];
-    // try {
-    //   validateFields({
-    //     required: requiredCreds,
-    //     obj: creds,
-    //     username: "user authentication",
-    //   });
-    // } catch (err) {
-    //   throw err;
-    // }
-
+  
     const user = await User.fetchUserByEmail(email);
 
     if (user) {
@@ -73,23 +64,7 @@ class User {
   static async register(creds) {
     console.log("runs");
     const { email, username, first_name, last_name, password } = creds;
-    // const requiredCreds = [
-    //   "email",
-    //   "password",
-    //   "first_name",
-    //   "last_name",
-    //   "username",
-    // ];
-    // try {
-    //   validateFields({
-    //     required: requiredCreds,
-    //     obj: creds,
-    //     username: "user registration",
-    //   });
-    // } catch (err) {
-    //   throw err;
-    // }
-
+   
     const existingUserWithEmail = await User.fetchUserByEmail(email);
     if (existingUserWithEmail) {
       throw new BadRequestError(`Duplicate email: ${email}`);
@@ -123,6 +98,40 @@ class User {
     console.log(user)
 
     return user;
+  }
+
+  static async nutrition(creds) {
+    console.log("nutrition");
+    const { id, name, category, quantity, calories, image_url } = creds;
+
+    const result = await db.query(
+      `INSERT INTO nutrition (
+              name,
+              category,
+              quantity,
+              calories,
+              image_url,
+              user_id
+            )
+            VALUES ($1, $2, $3, $4, $5, $6)
+            RETURNING name,
+                      category,
+                      calories,
+                      quantity
+                      `,
+      [
+        name,
+        category,
+        quantity,
+        calories,
+        image_url,
+        id
+      ]
+    );
+    const nutrition = result.rows[0];
+    console.log(nutrition)
+
+    return nutrition;
   }
 
   /**

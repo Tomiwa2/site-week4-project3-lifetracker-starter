@@ -1,7 +1,9 @@
 import * as React from "react";
+import { Link } from "react-router-dom";
 import "./NutritionPage.css";
 
 export default function NutritionPage({ appState, setAppState }) {
+    
   return (
     <>
       {appState.isAuthenticated ? (
@@ -21,9 +23,9 @@ export default function NutritionPage({ appState, setAppState }) {
                         <h2 className="chakra-heading css-hzsul0">
                           Nothing here yet.
                         </h2>
-                        <a
+                        < Link to = "/nutrition/create"
                           className="chakra-link button css-spn4bz"
-                          href="/nutrition/create"
+                          
                         >
                           <button
                             type="button"
@@ -31,7 +33,7 @@ export default function NutritionPage({ appState, setAppState }) {
                           >
                             Record Nutrition
                           </button>
-                        </a>
+                        </Link>
                         <img
                           src="src/assets/empty-fridge.jpg"
                           className="chakra-image css-ni3ua3"

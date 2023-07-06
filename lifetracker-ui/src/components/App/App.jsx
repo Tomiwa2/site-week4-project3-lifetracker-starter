@@ -14,14 +14,16 @@ import ActivityPage from "../ActivityPage/ActivityPage";
 import ExercisePage from "../ExercisePage/ExercisePage"
 import NutritionPage from "../NutritionPage/NutritionPage"
 import SleepPage from "../SleepPage/SleepPage"
+import NutritionForm from "../NutritionForm/NutritionForm"
+
 
 export default function App() {
   const [appState, setAppState] = useState({
     user: {},
     isAuthenticated: false,
-    nutrition: {},
-    sleep: {},
-    exercise: {},
+    nutrition: [],
+    sleep: [],
+    exercise: [],
   });
 
 
@@ -41,7 +43,7 @@ console.log(appState)
           <Route
             path="/register"
             element={<RegistrationPage setAppState={setAppState} />}/>
-            
+
           <Route 
           path = "/activity"
           element = {<ActivityPage appState = {appState} setAppState = {setAppState}/>}/>
@@ -58,7 +60,12 @@ console.log(appState)
           path = "/sleep"
           element = {<SleepPage  appState = {appState} setAppState = {setAppState}/>}/>
 
+          {} 
+          <Route 
+          path = "/nutrition/create"
+          element = {<NutritionForm  appState = {appState} setAppState = {setAppState}/>}/>
           <Route />
+
         </Routes>
         {/* <Hero />
           <FeedTiles /> */}
