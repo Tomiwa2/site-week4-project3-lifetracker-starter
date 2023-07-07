@@ -16,15 +16,16 @@ export default function LoginPage({ appState, setAppState }) {
     try {
       const res = await axios.post(`http://localhost:3001/auth/login`, {
         email: email,
-        password: password,
+        password: password
       });
 
       console.log(res);
-      if (res?.data?.user) {
+      if (res?.data?.userInfo) {
         setAppState((prevState) => ({
           ...prevState,
-          user: res.data.user,
-          isAuthenticated: true,
+          user: res.data.userInfo,
+          nutrition: res.data.nutrition,
+          isAuthenticated: true
         }));
 
         Navigate("/activity");

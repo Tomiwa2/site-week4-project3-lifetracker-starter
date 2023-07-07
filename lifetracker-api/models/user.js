@@ -28,7 +28,22 @@ class User {
     };
   }
 
- 
+  static async allNutrition(id) {
+    const nutrition = await db.query(
+      `SELECT 
+      name,
+      category, 
+      quantity, 
+      calories, 
+      image_url 
+      FROM nutrition 
+      WHERE user_id = $1 
+      ORDER BY created_at DESC`,
+      [id]
+    );
+    return {nutrition: nutrition.rows}
+  }
+
   /**
    * Authenticate user with email and password.
    *
@@ -38,19 +53,29 @@ class User {
    **/
 
   static async authenticate(creds) {
-    const { email, password } = creds;
-  
-    const user = await User.fetchUserByEmail(email);
 
+    const { email, password } = creds;
+    const user = await User.fetchUserByEmail(email);
+    try{
     if (user) {
       // compare hashed password to a new hash from password
       const isValid = await bcrypt.compare(password, user.password);
+      console.log(isValid)
       if (isValid === true) {
-        return User._createPublicUser(user);
+        const {nutrition} = await User.allNutrition(user.id)
+        const userInfo = User._createPublicUser(user)
+        console.log(userInfo)
+        return {userInfo, nutrition};
       }
+      
     }
-
+console.log("its coming")
     throw new UnauthorizedError("Invalid username/password");
+  }
+  catch(error){
+    console.error(error)
+    return null
+  }
   }
 
   /**
@@ -64,7 +89,7 @@ class User {
   static async register(creds) {
     console.log("runs");
     const { email, username, first_name, last_name, password } = creds;
-   
+
     const existingUserWithEmail = await User.fetchUserByEmail(email);
     if (existingUserWithEmail) {
       throw new BadRequestError(`Duplicate email: ${email}`);
@@ -86,16 +111,10 @@ class User {
             RETURNING first_name,
                       last_name 
                       `,
-      [
-        normalizedEmail,
-        username,
-        first_name,
-        last_name,
-        hashedPassword
-      ]
+      [normalizedEmail, username, first_name, last_name, hashedPassword]
     );
     const user = result.rows[0];
-    console.log(user)
+    console.log(user);
 
     return user;
   }
@@ -120,17 +139,10 @@ class User {
                       quantity,
                       image_url
                       `,
-      [
-        name,
-        category,
-        quantity,
-        calories,
-        image_url,
-        id
-      ]
+      [name, category, quantity, calories, image_url, id]
     );
     const nutrition = result.rows[0];
-    console.log(nutrition)
+    console.log(nutrition);
 
     return nutrition;
   }

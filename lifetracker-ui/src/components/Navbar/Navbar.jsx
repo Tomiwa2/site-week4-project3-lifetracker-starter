@@ -3,6 +3,13 @@ import { Link } from "react-router-dom";
 import "./Navbar.css";
 
 export default function Navbar({ appState, setAppState }) {
+  function handleSubmit(e){
+    e.preventDefault()
+    setAppState((prev) => ({
+      ...prev, 
+      isAuthenticated:false
+    }))
+  }
   return (
     <>
       <div className="Navbar css-15bu2in">
@@ -34,7 +41,7 @@ export default function Navbar({ appState, setAppState }) {
         <div className="css-70qvj9">
           {appState.isAuthenticated ? (
             <Link to="/" className="chakra-link css-spn4bz">
-              <button type="button" className="chakra-button css-1t9i4zo">
+              <button onClick = {handleSubmit} type="button" className="chakra-button css-1t9i4zo">
                 Sign Out
               </button>
             </Link>

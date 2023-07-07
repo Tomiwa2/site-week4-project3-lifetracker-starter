@@ -30,8 +30,8 @@ try{
 
 router.post("/login", async function (req, res, next) {
   try {
-    const user = await User.authenticate(req.body);
-    return res.status(200).json({ user });
+    const {userInfo, nutrition} = await User.authenticate(req.body);
+    return res.status(200).json({ userInfo, nutrition});
   } catch (err) {
     next(err);
   }
