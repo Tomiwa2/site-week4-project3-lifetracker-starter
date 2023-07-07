@@ -4,6 +4,7 @@
 // //const pool = require('./config/database')
 // const authRoutes = require("./routes/auth");
 const app = require("./app");
+
 const { PORT } = require("./config");
 
 // const app = express();
