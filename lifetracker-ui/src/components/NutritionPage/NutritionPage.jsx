@@ -48,7 +48,7 @@ export default function NutritionPage({ appState, setAppState }) {
                           Record Nutrition
                         </button>
                       </Link>
-                      {appState.nutrition.length === 0 ? (
+                      {appState.nutrition.nutrition.length === 0 ? (
                         <div className="css-j7qwjs">
                           <h2 className="chakra-heading css-hzsul0">
                             Nothing here yet.

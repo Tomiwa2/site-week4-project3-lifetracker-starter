@@ -41,11 +41,11 @@ export default function Navbar({ appState, setAppState }) {
 
         <div className="css-70qvj9">
           {appState.isAuthenticated ? (
-            <Link to="/" className="chakra-link css-spn4bz">
+            <a href="/" className="chakra-link css-spn4bz">
               <button onClick = {handleSubmit} type="button" className="chakra-button css-1t9i4zo">
                 Sign Out
               </button>
-            </Link>
+            </a>
           ) : (
             <>
               <Link to="/login" className="chakra-link css-spn4bz">

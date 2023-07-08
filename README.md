@@ -40,7 +40,9 @@ By the end of this project you will be able to...
 
 
 ### Walkthrough Video
-https://www.loom.com/share/8dbab3ca3787403c9546e03527c90d7b?sid=60117b29-6441-4799-a67f-2c22b49b628f
+<!-- https://www.loom.com/share/8dbab3ca3787403c9546e03527c90d7b?sid=60117b29-6441-4799-a67f-2c22b49b628f -->
+
+https://loom.com/share/482961e9acaa48ddb7be8c22d87c9026?sid=17fc0c7b-de88-4ffb-b281-dbdb5d7c9095
 
 
 

@@ -88,7 +88,8 @@ export default function RegistrationPage({ setAppState }) {
         }
         localStorage.setItem("Lifetracker_Token", data.token )
         apiClient.setToken(data.token);
-        Navigate("/");
+        window.location.href = "/"
+       // Navigate("/");
       }catch(err){
         console.log(err);
         const message = err?.response?.data?.error?.message;
