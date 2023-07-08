@@ -3,6 +3,7 @@ import "./LoginPage.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import apiClient from "../../Services/apiClient";
 
 export default function LoginPage({ appState, setAppState }) {
   const [email, setEmail] = useState("");
@@ -13,37 +14,67 @@ export default function LoginPage({ appState, setAppState }) {
 
   const handleLogin = async (event) => {
     event.preventDefault();
-    try {
-      const res = await axios.post(`http://localhost:3001/auth/login`, {
+
+    try{
+
+      const {data, error, message} = await apiClient.login({
         email: email,
         password: password
-      });
-
-      console.log(res);
-      if (res?.data?.userInfo) {
+      })
+      console.log(data)
+      console.log(error)
+      if (data) {
         setAppState((prevState) => ({
           ...prevState,
-          user: res.data.userInfo,
-          nutrition: res.data.nutrition,
-          isAuthenticated: true
-        }));
-
-        Navigate("/activity");
-      } else {
-        setErrors((e) => ({
-          ...e,
-          form: "Invalid Password/Email",
-        }));
-        //setIsLoading(false);
+                user: data.userInfo,
+                nutrition: data.nutrition,
+                isAuthenticated: true
+              }));
       }
-    } catch (err) {
+      localStorage.setItem("Lifetracker_Token", data.token )
+      apiClient.setToken(data.token);
+      Navigate("/");
+    }catch(err){
       console.log(err);
       const message = err?.response?.data?.error?.message;
       setErrors((e) => ({
         ...e,
-        form: "Invalid Password/Email",
+        form: message ? String(message) : String(err),
       }));
+
     }
+    // try {
+    //   const res = await axios.post(`http://localhost:3001/auth/login`, {
+    //     email: email,
+    //     password: password
+    //   });
+
+    //   console.log(res.data.token);
+    //   if (res?.data?.userInfo) {
+    //     setAppState((prevState) => ({
+    //       ...prevState,
+    //       user: res.data.userInfo,
+    //       nutrition: res.data.nutrition,
+    //       isAuthenticated: true
+    //     }));
+
+    //    localStorage.setItem("Lifetracker_Token", res.data.token )
+    //     Navigate("/");
+    //   } else {
+    //     setErrors((e) => ({
+    //       ...e,
+    //       form: "Invalid Password/Email",
+    //     }));
+    //     //setIsLoading(false);
+    //   }
+    // } catch (err) {
+    //   console.log(err);
+    //   const message = err?.response?.data?.error?.message;
+    //   setErrors((e) => ({
+    //     ...e,
+    //     form: "Invalid Password/Email",
+    //   }));
+    // }
   };
 
   return (

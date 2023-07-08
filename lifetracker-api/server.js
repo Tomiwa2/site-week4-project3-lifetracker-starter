@@ -1,3 +1,5 @@
+"use strict"
+
 // const express = require("express");
 // const cors = require("cors");
 // const { NotFoundError, BadRequestError } = require("./utils/errors");
@@ -18,6 +20,6 @@ const { PORT } = require("./config");
 //   return next(new NostFoundError());
 // });
 
-app.listen(PORT, () => {
+app.listen(PORT, function () {
   console.log(`Server running on http://localhost:${PORT}`);
 });

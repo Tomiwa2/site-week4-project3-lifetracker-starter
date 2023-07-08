@@ -30,12 +30,8 @@ class User {
 
   static async allNutrition(id) {
     const nutrition = await db.query(
-      `SELECT 
-      name,
-      category, 
-      quantity, 
-      calories, 
-      image_url 
+      `SELECT *
+
       FROM nutrition 
       WHERE user_id = $1 
       ORDER BY created_at DESC`,
@@ -95,7 +91,7 @@ console.log("its coming")
       throw new BadRequestError(`Duplicate email: ${email}`);
     }
 
-    const salt = await bcrypt.genSalt(13);
+    const salt = await bcrypt.genSalt(BCRYPT_WORK_FACTOR );
     const hashedPassword = await bcrypt.hash(password, salt);
     const normalizedEmail = email.toLowerCase();
 

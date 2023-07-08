@@ -3,6 +3,7 @@ import "./RegistrationPage.css";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import apiClient from "../../Services/apiClient";
 
 export default function RegistrationPage({ setAppState }) {
   const [userInfo, setUserInfo] = useState({
@@ -56,50 +57,86 @@ export default function RegistrationPage({ setAppState }) {
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
+
+
     setIsLoading(true);
     setErrors((e) => ({ ...e, form: null }));
     if (userInfo.confirmpassword !== userInfo.password) {
-      // setErrors((e) => ({...e, passwordConfirm: "Passwords do not match."}))
+      
 
       setIsLoading(false);
       return;
     } else {
-      // setErrors((e) => ({...e, passwordConfirm: null}));
-    }
 
-    try {
-      const res = await axios.post(`http://localhost:3001/auth/register`, {
-        email: userInfo.email,
-        username: userInfo.username,
-        first_name: userInfo.first_name,
-        last_name: userInfo.last_name,
-        password: userInfo.password,
-      });
+      try{
 
-      console.log(res);
-      if (res?.data?.user) {
-        setAppState((prevState) => ({
-          ...prevState,
-          user: res.data.user,
-          isAuthenticated: true,
-        }));
-        setIsLoading(false);
+        const {data, error, message} = await apiClient.register({
+              email: userInfo.email,
+              username: userInfo.username,
+              first_name: userInfo.first_name,
+              last_name: userInfo.last_name,
+              password: userInfo.password
+        })
+        console.log(data)
+        console.log(error)
+        if (data) {
+          setAppState((prevState) => ({
+                  ...prevState,
+                  user: data.user,
+                  isAuthenticated: true,
+                }));
+        }
+        localStorage.setItem("Lifetracker_Token", data.token )
+        apiClient.setToken(data.token);
         Navigate("/");
-      } else {
+      }catch(err){
+        console.log(err);
+        const message = err?.response?.data?.error?.message;
         setErrors((e) => ({
           ...e,
-          form: "Something went wrong with registering",
+          form: message ? String(message) : String(err),
         }));
-        setIsLoading(false);
+
       }
-    } catch {
-      console.log(err);
-      const message = err?.response?.data?.error?.message;
-      setErrors((e) => ({
-        ...e,
-        form: message ? String(message) : String(err),
-      }));
+
     }
+
+    // try {
+    //   const res = await axios.post(`http://localhost:3001/auth/register`, {
+    //     email: userInfo.email,
+    //     username: userInfo.username,
+    //     first_name: userInfo.first_name,
+    //     last_name: userInfo.last_name,
+    //     password: userInfo.password,
+    //   });
+
+    //   console.log(res);
+    //   if (res?.data?.user) {
+    //     setAppState((prevState) => ({
+    //       ...prevState,
+    //       user: res.data.user,
+    //       isAuthenticated: true,
+    //     }));
+    //     console.log(res)
+    //     localStorage.setItem("Lifetracker_Token", res.data.token )
+      
+    //     setIsLoading(false);
+    //     Navigate("/");
+    //   } else {
+    //     setErrors((e) => ({
+    //       ...e,
+    //       form: "Something went wrong with registering",
+    //     }));
+    //     setIsLoading(false);
+    //   }
+    // } catch(err) {
+    //   console.log(err);
+    //   const message = err?.response?.data?.error?.message;
+    //   setErrors((e) => ({
+    //     ...e,
+    //     form: message ? String(message) : String(err),
+    //   }));
+    // }
   };
 
   return (

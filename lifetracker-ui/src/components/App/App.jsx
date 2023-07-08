@@ -15,6 +15,7 @@ import ExercisePage from "../ExercisePage/ExercisePage"
 import NutritionPage from "../NutritionPage/NutritionPage"
 import SleepPage from "../SleepPage/SleepPage"
 import NutritionForm from "../NutritionForm/NutritionForm"
+import apiClient from "../../Services/apiClient";
 
 
 export default function App() {
@@ -26,6 +27,45 @@ export default function App() {
     exercise: [],
   });
 
+  useEffect(() => {
+    const token = localStorage.getItem("Lifetracker_Token")
+    apiClient.setToken(token);
+    async function fetchUser(){
+      if (token) {
+        try {
+          const { data, error, message } = await apiClient.me();
+          console.log(data)
+          
+          if (error) {
+            setAppState((prevState) => ({
+              ...prevState,
+              isAuthenticated: false
+            }));
+            localStorage.setItem("LifeTracker_Token", null);
+            // navigate("/login")
+            return;
+          }
+          setAppState((prevState) => ({
+            ...prevState,
+            user: data.user,
+            isAuthenticated: true,
+            nutrition: data.nutrition
+            // sleep: data.sleep,
+            // exercise: data.exercise,
+          }));
+        } catch (err) {
+          console.error(err);
+        }
+      } else {
+        localStorage.setItem("LifeTracker_Token", null);
+      }
+   
+    }
+    fetchUser()
+  }, [appState.isAuthenticated]
+  )
+
+
 
   //use this function later to pass data from frontend to backend
   const loginData = async (email, password) => {};
@@ -35,7 +75,7 @@ console.log(appState)
       <BrowserRouter>
         <Navbar appState = {appState} setAppState = {setAppState}/>
         <Routes>
-          <Route path="/" element={<Hero />} />
+          <Route path="/" element={<Hero appState = {appState}/>} />
           <Route
             path="/login"
             element={

@@ -1,9 +1,27 @@
 import * as React from "react";
 import "./ActivityPage.css";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 export default function ActivityPage({ appState, setAppState }) {
   console.log(appState);
+
+  // const[stats, setStats] = useState ({
+  //    avgNutri: 0,
+  //    totNutri: 0
+  // })
+  // console.log(stats)
+  // useEffect(() => {
+  //   async function fetch() {
+  //     try{ 
+  //       const.
+
+  //     } catch{
+
+  //     }
+  //   }
+  // })
+
   return (
     <>
       {appState.isAuthenticated ? (

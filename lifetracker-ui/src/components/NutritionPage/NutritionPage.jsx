@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./NutritionPage.css";
 import { useEffect, useState } from "react";
 
+
 export default function NutritionPage({ appState, setAppState }) {
   const [nutriForm, setNutriform] = useState(false);
 
@@ -10,6 +11,14 @@ export default function NutritionPage({ appState, setAppState }) {
     event.preventDefault();
     setNutriform(true);
   };
+
+  console.log(appState.nutrition.nutrition)
+
+  function timestamp(stamp){
+    let time = new Date(stamp);
+    return time.toLocaleTimeString();
+
+  }
 
   return (
     <>
@@ -51,9 +60,11 @@ export default function NutritionPage({ appState, setAppState }) {
                           />
                         </div>
                       ) : (
-                        appState.nutrition.map((info) => {
+                        appState.nutrition.nutrition.map((info) => {
                           // console.log("info: ", info)
-                          return <div> {info.name} </div>;
+                          return <div> 
+                            <div>Today at {timestamp(info.created_at)}</div>
+                            {info.name} </div>;
                         })
                       )}
                     </div>

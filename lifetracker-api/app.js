@@ -21,4 +21,22 @@ app.get("/", (request, res) => {
   return res.status(200).json({ ping: "pong" });
 });
 
-module.exports = {}
+
+
+/** Handle 404 errors -- this matches everything */
+app.use(function (req, res, next) {
+  return next(new NotFoundError())
+})
+
+/** Generic error handler; anything unhandled goes here. */
+app.use(function (err, req, res, next) {
+  const status = err.status || 500
+  const message = err.message
+
+  return res.status(status).json({
+    error: { message, status },
+  })
+})
+
+
+module.exports = app

@@ -3,6 +3,7 @@ import "./NutritionForm.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import apiClient from "../../Services/apiClient";
 
 export default function NutritionForm({ appState, setAppState }) {
   const [formData, setFormData] = useState({
@@ -26,31 +27,63 @@ console.log(formData)
 const handleOnSubmit = async (e) => {
     e.preventDefault();
 
-    try {
-      const res = await axios.post(`http://localhost:3001/auth/nutrition/create`, {
-        name:  formData.name,
-        category: formData.category,
-        quantity: formData.quantity,
-        calories: formData.calories,
-        image_url: formData.imageUrl,
-        id: appState.user.id,
-      });
+    try{
 
-      console.log(res);
-    
+      const {data, error, message} = await apiClient.nutrition({
+        name:  formData.name,
+            category: formData.category,
+            quantity: formData.quantity,
+            calories: formData.calories,
+            image_url: formData.imageUrl,
+            id: appState.user.id,
+      })
+      console.log(data)
+      
+      if (data) {
         setAppState((prevState) => ({
           ...prevState,
-          nutrition: [res.data.nutrition, ...prevState.nutrition],
-          
-        }));
-        
-        Navigate("/nutrition");
+                nutrition: [data.nutrition, ...prevState.nutrition],
+              }));
+      }
+    const token = localStorage.getItem("Lifetracker_Token" )
       
-    } catch(err) {
+      apiClient.setToken(token);
+      Navigate("/nutrition");
+    }catch(err){
       console.log(err);
       const message = err?.response?.data?.error?.message;
-      
+      setErrors((e) => ({
+        ...e,
+        form: message ? String(message) : String(err),
+      }));
+
     }
+
+    // try {
+    //   const res = await axios.post(`http://localhost:3001/auth/nutrition/create`, {
+    //     name:  formData.name,
+    //     category: formData.category,
+    //     quantity: formData.quantity,
+    //     calories: formData.calories,
+    //     image_url: formData.imageUrl,
+    //     id: appState.user.id,
+    //   });
+
+    //   console.log(res);
+    
+    //     setAppState((prevState) => ({
+    //       ...prevState,
+    //       nutrition: [res.data.nutrition, ...prevState.nutrition],
+          
+    //     }));
+        
+    //     Navigate("/nutrition");
+      
+    // } catch(err) {
+    //   console.log(err);
+    //   const message = err?.response?.data?.error?.message;
+      
+    // }
   };
 
 

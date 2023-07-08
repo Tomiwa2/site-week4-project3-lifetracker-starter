@@ -9,6 +9,7 @@ export default function Navbar({ appState, setAppState }) {
       ...prev, 
       isAuthenticated:false
     }))
+    localStorage.setItem("Lifetracker_Token", null)
   }
   return (
     <>

@@ -3,12 +3,13 @@ import "./Hero.css";
 import { Link } from "react-router-dom";
 import FeedTiles from "../FeedTiles/FeedTiles";
 
-export default function Hero() {
+export default function Hero({appState}) {
   return (
     <>
       <div className="css-1561uet">
         <div className="chakra-stack css-18rb735">
-          <h1 className="chakra-heading css-bgad6s">LifeTracker</h1>
+          {appState.isAuthenticated? (<>{appState.user.first_name}</>):(<h1 className="chakra-heading css-bgad6s">LifeTracker</h1>)}
+          
           <h2 className="chakra-heading css-1la3ewl">
             Helping you take back control of your world.
           </h2>
