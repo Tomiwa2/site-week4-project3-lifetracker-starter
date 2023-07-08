@@ -49,9 +49,9 @@ export default function App() {
             ...prevState,
             user: data.user,
             isAuthenticated: true,
-            nutrition: data.nutrition
-            // sleep: data.sleep,
-            // exercise: data.exercise,
+            nutrition: data.nutrition,
+            sleep: data.sleep,
+            exercise: data.exercise,
           }));
         } catch (err) {
           console.error(err);

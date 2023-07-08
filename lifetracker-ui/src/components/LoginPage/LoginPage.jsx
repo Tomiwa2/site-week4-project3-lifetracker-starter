@@ -33,7 +33,7 @@ export default function LoginPage({ appState, setAppState }) {
       }
       localStorage.setItem("Lifetracker_Token", data.token )
       apiClient.setToken(data.token);
-      Navigate("/");
+      Navigate("/activity");
     }catch(err){
       console.log(err);
       const message = err?.response?.data?.error?.message;

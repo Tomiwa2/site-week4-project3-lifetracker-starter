@@ -56,6 +56,7 @@ const handleOnSubmit = async (e) => {
         ...e,
         form: message ? String(message) : String(err),
       }));
+      console.log(prevState)
 
     }
 

@@ -51,3 +51,9 @@ element.style {
 .css-1jijfcn {
   font-size: var(--chakra-fontSizes-3xl);
 }
+
+.imagee{
+  height: 300px;
+  width: 300px;
+  
+}

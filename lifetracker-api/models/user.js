@@ -143,6 +143,13 @@ console.log("its coming")
     return nutrition;
   }
 
+  static async nutristats(idInfo) {
+     const {id} = idInfo
+    const avgNutriHours = await pool.query(
+     `SELECT AVG(EXTRACT(EPOCH FROM ()))` 
+    )
+    }
+
   /**
    * Fetch a user in the database by email
    *

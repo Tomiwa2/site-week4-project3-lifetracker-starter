@@ -31,7 +31,7 @@ export default function FeedTiles() {
             //style={{'background-image: url("/src/assets/athlete.jpg"), background-size: cover, background-repeat: no-repeat}}
           >
             {" "}
-            <img src="/src/assets/athlete.jpg" />
+            < img className="imagee" src="/src/assets/athlete.jpg" />
           </div>
         </div>
         <div spacing="10px" className="css-dvxtzn">
@@ -88,7 +88,10 @@ export default function FeedTiles() {
           <div
             className="Tile"
             //style='background-image: url("/assets/food-e5a7cc9e.jpg"); background-size: cover; background-repeat: no-repeat;'
-          ></div>
+          >
+            {" "}
+            <img className="imagee" src="/src/assets/food.jpg" />
+          </div>
         </div>
         <div spacing="10px" className="css-dvxtzn">
           <div className="css-70qvj9">
@@ -110,7 +113,10 @@ export default function FeedTiles() {
           <div
             className="Tile"
             //style='background-image: url("/assets/alarm-cff3823f.jpg"); background-size: cover; background-repeat: no-repeat;'
-          ></div>
+          >
+            {" "}
+            <img className="imagee" src="/src/assets/alarm.jpg" />
+          </div>
         </div>
         <div spacing="10px" className="css-dvxtzn">
           <div className="css-70qvj9">
@@ -132,7 +138,10 @@ export default function FeedTiles() {
           <div
             className="Tile"
             //style='background-image: url("/assets/calendar-debf6f3b.jpg"); background-size: cover; background-repeat: no-repeat;'
-          ></div>
+          >
+            {" "}
+            <img className="imagee" src="/src/assets/calendar.jpg" />
+          </div>
         </div>
       </div>
       ;
