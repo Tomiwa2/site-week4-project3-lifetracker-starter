@@ -41,7 +41,7 @@ export default function App() {
               ...prevState,
               isAuthenticated: false
             }));
-            localStorage.setItem("LifeTracker_Token", null);
+            localStorage.setItem("Lifetracker_Token", null);
             // navigate("/login")
             return;
           }
@@ -57,7 +57,7 @@ export default function App() {
           console.error(err);
         }
       } else {
-        localStorage.setItem("LifeTracker_Token", null);
+        localStorage.setItem("Lifetracker_Token", null);
       }
    
     }

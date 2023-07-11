@@ -15,7 +15,7 @@ By the end of this project you will be able to...
 - [ ] Construct multiple models that implement the core business logic associated with tracking users' lives
 - [ ] Write SQL queries that aggregate user statistics and provide summary overviews about their activity
 - [ ] Design a React frontend that interacts with the API using an API service class
-- [ ] Build multiple pages and forms that communicate with the server using HTTP requests
+- [ ] Build multiple pages and forms that communicate with the server using rrrrrrrr;rrrrkrrrrHTTP requests
 - [ ] Employ `useEffect` and `useState` hooks to manage application state on the frontend
 - [ ] Store user-authenticated JWT tokens in the browser's local storage for persisted authentication
 
@@ -43,6 +43,10 @@ By the end of this project you will be able to...
 <!-- https://www.loom.com/share/8dbab3ca3787403c9546e03527c90d7b?sid=60117b29-6441-4799-a67f-2c22b49b628f -->
 
 https://loom.com/share/482961e9acaa48ddb7be8c22d87c9026?sid=17fc0c7b-de88-4ffb-b281-dbdb5d7c9095
+
+### Link to deployed website
+
+https://lifetrackerfrontend-4uxt.onrender.com
 
 
 
